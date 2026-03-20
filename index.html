@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#08080f">
 <title>BodyComp</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
 :root {
@@ -23,10 +23,10 @@
   --text: #ededf5;
   --muted: #55556a;
   --muted2: #888899;
-  --font: 'Syne', sans-serif;
-  --mono: 'JetBrains Mono', monospace;
+  --font: 'Nunito', system-ui, sans-serif;
+  --mono: 'Nunito', system-ui, sans-serif;
   --radius: 16px;
-  --bottom-bar: 72px;
+  --bottom-bar: 68px;
 }
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 html, body { height:100%; overflow:hidden; background:var(--bg); color:var(--text); font-family:var(--font); }
@@ -45,12 +45,21 @@ html, body { height:100%; overflow:hidden; background:var(--bg); color:var(--tex
 /* TOP BAR */
 .topbar {
   position:sticky; top:0; z-index:10;
-  padding:52px 20px 16px;
-  background:linear-gradient(to bottom, var(--bg) 70%, transparent);
+  padding:48px 20px 14px;
+  background:linear-gradient(to bottom, var(--bg) 75%, transparent);
   display:flex; justify-content:space-between; align-items:flex-end;
 }
-.topbar-title { font-size:26px; font-weight:800; letter-spacing:-0.5px; }
-.topbar-sub { font-family:var(--mono); font-size:10px; color:var(--muted2); letter-spacing:2px; text-transform:uppercase; }
+.topbar-title {
+  font-size:24px; font-weight:900; letter-spacing:-0.3px;
+  display:flex; align-items:center; gap:8px;
+}
+.topbar-logo {
+  width:32px; height:32px; border-radius:8px;
+  background:var(--lime); display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.topbar-logo svg { width:18px; height:18px; }
+.topbar-sub { font-size:11px; color:var(--muted2); letter-spacing:0.5px; font-weight:600; margin-top:2px; }
 .topbar-action {
   background:var(--card2); border:1px solid var(--border2);
   color:var(--text); padding:8px 14px; border-radius:10px;
@@ -62,29 +71,29 @@ html, body { height:100%; overflow:hidden; background:var(--bg); color:var(--tex
 /* BOTTOM NAV */
 #bottomNav {
   height:var(--bottom-bar);
-  background:rgba(8,8,15,0.95);
+  background:rgba(8,8,15,0.97);
   backdrop-filter:blur(20px);
   border-top:1px solid var(--border);
   display:flex; align-items:center; justify-content:space-around;
-  padding:0 8px;
+  padding:0 4px;
   padding-bottom:env(safe-area-inset-bottom);
   flex-shrink:0;
 }
 .nav-btn {
-  display:flex; flex-direction:column; align-items:center; gap:4px;
-  padding:8px 16px; border-radius:12px; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+  padding:6px 4px; border-radius:10px; cursor:pointer;
   transition:all 0.2s; border:none; background:transparent;
-  color:var(--muted); flex:1;
+  color:var(--muted); flex:1; min-width:0;
 }
 .nav-btn.active { color:var(--lime); }
-.nav-btn svg { width:22px; height:22px; }
-.nav-label { font-family:var(--mono); font-size:9px; letter-spacing:1px; text-transform:uppercase; }
+.nav-btn svg { width:20px; height:20px; flex-shrink:0; }
+.nav-label { font-size:9px; font-weight:700; letter-spacing:0.3px; text-transform:uppercase; white-space:nowrap; }
 
 /* SECTION HEADER */
 .section-pad { padding:0 20px; }
 .section-label {
-  font-family:var(--mono); font-size:10px; color:var(--muted2);
-  letter-spacing:3px; text-transform:uppercase;
+  font-size:11px; color:var(--muted2); font-weight:700;
+  letter-spacing:1px; text-transform:uppercase;
   display:flex; align-items:center; gap:10px; margin-bottom:12px;
 }
 .section-label::after { content:''; flex:1; height:1px; background:var(--border); }
@@ -110,9 +119,9 @@ html, body { height:100%; overflow:hidden; background:var(--bg); color:var(--tex
   content:''; position:absolute; top:0; left:0; right:0; height:2px;
   background:var(--accent-color, var(--lime));
 }
-.metric-box .mlabel { font-family:var(--mono); font-size:9px; color:var(--muted2); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
-.metric-box .mval { font-size:28px; font-weight:800; line-height:1; }
-.metric-box .msub { font-family:var(--mono); font-size:10px; color:var(--muted2); margin-top:4px; }
+.metric-box .mlabel { font-size:10px; color:var(--muted2); letter-spacing:0.5px; text-transform:uppercase; margin-bottom:6px; font-weight:700; }
+.metric-box .mval { font-size:30px; font-weight:900; line-height:1; }
+.metric-box .msub { font-size:11px; color:var(--muted2); margin-top:4px; font-weight:600; }
 .badge {
   display:inline-flex; align-items:center; gap:4px;
   font-family:var(--mono); font-size:9px; padding:3px 8px;
@@ -130,8 +139,8 @@ html, body { height:100%; overflow:hidden; background:var(--bg); color:var(--tex
   margin:0 20px 10px;
 }
 .chart-header { margin-bottom:14px; }
-.chart-label { font-family:var(--mono); font-size:9px; color:var(--muted2); letter-spacing:2px; text-transform:uppercase; }
-.chart-title-text { font-size:16px; font-weight:700; margin-top:2px; }
+.chart-label { font-size:10px; color:var(--muted2); letter-spacing:0.5px; text-transform:uppercase; font-weight:700; }
+.chart-title-text { font-size:17px; font-weight:800; margin-top:2px; }
 .chart-wrap { height:160px; position:relative; }
 .chart-wrap-sm { height:130px; position:relative; }
 
@@ -285,7 +294,14 @@ html, body { height:100%; overflow:hidden; background:var(--bg); color:var(--tex
     <div class="screen active" id="screen-home">
       <div class="topbar">
         <div>
-          <div class="topbar-title">BodyComp</div>
+          <div class="topbar-title">
+            <div class="topbar-logo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+              </svg>
+            </div>
+            BodyComp
+          </div>
           <div class="topbar-sub" id="homeSubtitle">Sin datos aún</div>
         </div>
         <button class="topbar-action" onclick="goScreen('upload')">+ CSV</button>
